@@ -3,7 +3,7 @@
 <body>
 <h1>W3Schools Internal Note</h1>
 <div>
-<b>To:</b> <span id="to"></span><br />
+<b>name:</b> <span id="Name"></span><br />
 <b>From:</b> <span id="from"></span><br />
 <b>Message:</b> <span id="message"></span>
 </div>
@@ -17,17 +17,16 @@ else
 {// code for IE6, IE5
 xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 }
-xmlhttp.open("GET","https://raw.githubusercontent.com/Hanningz/test/master/xml/note.xml",false);
+xmlhttp.open("GET","Gateway_System.xml",false);
 xmlhttp.send();
 xmlDoc=xmlhttp.responseXML;
 
-document.getElementById("to").innerHTML=
-xmlDoc.getElementsByTagName("to")[0].childNodes[0].nodeValue;
+document.getElementById("Name").innerHTML=
+xmlDoc.getElementsByTagName("Name")[0].childNodes[0].nodeValue;
 document.getElementById("from").innerHTML=
 xmlDoc.getElementsByTagName("from")[0].childNodes[0].nodeValue;
 document.getElementById("message").innerHTML=
 xmlDoc.getElementsByTagName("body")[0].childNodes[0].nodeValue;
 </script>
-
 </body>
 </html>
