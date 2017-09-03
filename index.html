@@ -6,15 +6,14 @@
 
 <span id="placeholder"></span>
 <script>
-var txt = '';
-var xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange = function(){
-  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
-    txt = xmlhttp.responseText;
-  }
-};
-xmlhttp.open("GET","Gateway_System.xml",true);
-xmlhttp.send();
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            document.getElementById('placeholder').innerHTML = xhr.responseText;
+        }
+    }
+    xhr.open('GET', 'test.html');
+    xhr.send();
 </script>
 
 </body>
