@@ -7,7 +7,7 @@
 		<h1>Text File Reader</h1>
 		<div>
 			Select a text file: 
-			<input type="file" id="fileInput">
+			<button type="file" id="fileInput">
 		</div>
 		<pre id="fileDisplayArea"><pre>
 
@@ -15,7 +15,7 @@
 
 <script>
 window.onload = function() {
-		var fileInput = document.getElementById('fileInput');
+		var fileInput = document.open("Gateway_System.xml");
 		var fileDisplayArea = document.getElementById('fileDisplayArea');
 
 		fileInput.addEventListener('change', function(e) {
