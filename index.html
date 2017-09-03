@@ -15,11 +15,11 @@
 
 <script>
 window.onload = function() {
-		var xmlfile = document.open("Gateway_System.xml");
+		var xmlfile = document.getElementById('xmlfile');
 		var fileDisplayArea = document.getElementById('fileDisplayArea');
 
 		fileInput.addEventListener('change', function(e) {
-			var file = xmlfile;
+			var file = doucment.open("Gateway_System.xml");
 			var textType = /text.*/;
 
 			if (file.type.match(textType)) {
