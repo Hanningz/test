@@ -2,18 +2,19 @@
 <html class="no-js" lang="">
  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <body>
-<h1>W3Schools Internal Note</h1>
+<h1>W3Internal Note</h1>
 
 <span id="placeholder"></span>
 <script>
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            document.getElementById("placeholder").innerText = xhr.responseText;
-        }
-    }
-    xhr.open("GET", "Gateway_System.xml");
-    xhr.send();
+var txt = '';
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function(){
+  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+    txt = xmlhttp.responseText;
+  }
+};
+xmlhttp.open("GET","Gateway_System.xml",true);
+xmlhttp.send();
 </script>
 
 </body>
