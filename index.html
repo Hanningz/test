@@ -7,7 +7,7 @@
 		<h1>Text File Reader</h1>
 		<div>
 			Select a text file: 
-			<input type="file" id="xmlfile">
+			<input type="file" id="fileInput">
 		</div>
 		<pre id="fileDisplayArea"><pre>
 
@@ -15,26 +15,12 @@
 
 <script>
 window.onload = function() {
-		var xmlfile = document.getElementById('xmlfile');
+		var fileInput = document.getElementById('fileInput');
 		var fileDisplayArea = document.getElementById('fileDisplayArea');
 
-		fileInput.addEventListener('change', function(e) {
-			var file = doucment.open("Gateway_System.xml");
-			var textType = /text.*/;
-
-			if (file.type.match(textType)) {
-				var reader = new FileReader();
-
-				reader.onload = function(e) {
-					fileDisplayArea.innerText = reader.result;
-				}
-
-				reader.readAsText(file);	
-			} else {
-				fileDisplayArea.innerText = "File not supported!"
-			}
-		});
+	
 }
+
 </script>
 </body>
 </html>
