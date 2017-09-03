@@ -2,31 +2,15 @@
 <html class="no-js" lang="">
 <body>
 <h1>W3Schools Internal Note</h1>
-<div>
-<b>name:</b> <span id="Name"></span><br />
-<b>From:</b> <span id="from"></span><br />
-<b>Message:</b> <span id="message"></span>
-</div>
+<div id="page-wrapper">
 
-<script>
-if (window.XMLHttpRequest)
-{// code for IE7+, Firefox, Chrome, Opera, Safari
-xmlhttp=new XMLHttpRequest();
-}
-else
-{// code for IE6, IE5
-xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-}
-xmlhttp.open("GET","Gateway_System.xml",false);
-xmlhttp.send();
-xmlDoc=xmlhttp.responseXML;
+		<h1>Text File Reader</h1>
+		<div>
+			Select a text file: 
+			<input type="file" id="fileInput">
+		</div>
+		<pre id="fileDisplayArea"><pre>
 
-document.getElementById("Name").innerHTML=
-xmlDoc.getElementsByTagName("Name")[0].childNodes[0].nodeValue;
-document.getElementById("from").innerHTML=
-xmlDoc.getElementsByTagName("from")[0].childNodes[0].nodeValue;
-document.getElementById("message").innerHTML=
-xmlDoc.getElementsByTagName("body")[0].childNodes[0].nodeValue;
-</script>
+	</div>
 </body>
 </html>
