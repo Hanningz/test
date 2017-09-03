@@ -18,24 +18,18 @@ window.onload = function() {
 		var fileInput = document.getElementById('fileInput');
 		var fileDisplayArea = document.getElementById('fileDisplayArea');
 
-		fileInput.addEventListener('change', function(e) {
-			if (window.XMLHttpRequest)
-			{
-			xmlhttp=new XMLHttpRequest();
-			}
-			else
-			{
-			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			var file=xmlhttp.open("GET","Gateway_System.xml",false);
-			
-			var textType = /xml.*/;
-			var reader = new FileReader();
-			reader.onload = function(e) {
-					fileDisplayArea.innerText = reader.result;
-				}
+		fileInput.addif (window.XMLHttpRequest)
+{
+xmlhttp=new XMLHttpRequest();
+}
+else
+{
+xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+}
+xmlhttp.open("GET","Gateway_System.xml",false);
+	
 
-				reader.readAsText(file);	
+	
 			
 		});
 }
