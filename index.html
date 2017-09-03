@@ -19,7 +19,16 @@ window.onload = function() {
 		var fileDisplayArea = document.getElementById('fileDisplayArea');
 
 		fileInput.addEventListener('change', function(e) {
-			var file = "Gateway_System.xml";
+			if (window.XMLHttpRequest)
+			{
+			xmlhttp=new XMLHttpRequest();
+			}
+			else
+			{
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			var file=xmlhttp.open("GET","Gateway_System.xml",false);
+			
 			var textType = /text.*/;
 
 			if (file.type.match(textType)) {
