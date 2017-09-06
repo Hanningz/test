@@ -95,12 +95,22 @@ Click the button to generate a ZIP file
 </BODY>
 <SCRIPT>
 
+
+	
 function create_zip() {
 	var zip = new JSZip();
-	zip.add("hello1.txt", "Gateway_system.xml");
-	zip.add("hello2.txt", "Hello Second World\n");
-	content = zip.generate();
-	location.href="data:application/zip;base64," + content;
+
+	zip.file("Gateway_System.xml");
+
+var img = zip.folder("images");
+img.file("smile.gif", imgData, {base64: true});
+
+zip.generateAsync({type:"blob"}).then(function(content) {
+    // see FileSaver.js
+    saveAs(content, "example.zip");
+});
+	
+	
 
 }
 
