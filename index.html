@@ -98,19 +98,17 @@ Click the button to generate a ZIP file
 
 	
 function create_zip() {
-	var zip = new JSZip();
+var zip = new JSZip();
+var con="34";
+zip.file("Hello.txt", con);
 
-zip.file("Hello.txt", "Hello World\n");
-
-var img = zip.folder("Gateway_System.xml");
-
+var img = zip.folder("images");
+img.file("smile.gif", imgData, {base64: true});
 
 zip.generateAsync({type:"blob"}).then(function(content) {
     // see FileSaver.js
     saveAs(content, "example.zip");
 });
-
-	
 
 }
 
