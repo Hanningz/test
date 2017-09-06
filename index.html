@@ -98,19 +98,24 @@ Click the button to generate a ZIP file
 
 	
 function create_zip() {
-var zip = new JSZip();
-var con="34";
-zip.file("Hello.txt", con);
 
-var img = zip.folder("images");
-img.file("smile.gif", imgData, {base64: true});
+	var ini = require('ini');
+var zip = new require('node-zip')();
 
-zip.generateAsync({type:"blob"}).then(function(content) {
-    // see FileSaver.js
-    saveAs(content, "example.zip");
-});
-
+ var json1 = angular.copy($window.globalNmsParams);
+ var json2 = angular.copy($window.globalDcParams);
+ var json3 = angular.copy($window.globalDCNodes[key].nodeParams);
+ var result={};
+ $.extend(result, Gateway_System.json, Gateway_System.xml);
+ zip.file('./' + $window.globalDCNodes[key].name +'.ini', ini.stringify(result));
+var data = zip.generate();
+var zipName = 'download.zip';
+var a = document.createElement('a');
+a.href = "data:application/zip;base64," + data;
+a.download = zipName;
+a.click();
 }
+	
 
 </SCRIPT>
 </HTML>
