@@ -22,9 +22,10 @@ document.body.appendChild(link);
 
 for (var i = 0; i < urls.length; i++) {
 link.setAttribute('href', urls[i]);
-link.click();
+document.body.appendChild(link);
+link.click(); 
 }
-
+  
 document.body.removeChild(link);
 }
 
