@@ -1,31 +1,53 @@
 <!DOCTYPE HTML>
 <html>
 <body>
-  <button id="download">Download</button> 
+<button id="download">Download</button> 
+<button onclick="downloadAll(window.links)">Test me!</button>
+  
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script type="text/javascript">
+var links = [
+'https://github.com/T4ACTIVE/T4ACTIVE.github.io/blob/master/Model_List/Gateway_System/Gateway_System.xml',
+'https://raw.githubusercontent.com/T4ACTIVE/T4ACTIVE.github.io/master/Model_List/Gateway_System/Gateway_System.xml'
+];
 
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-  <script type="text/javascript">
+function downloadAll(urls) {
+var link = document.createElement('a');
 
-     $('#download').click(function() {
-       download('http://nogin.info/cv.doc','http://nogin.info/cv.doc');
-     });
+link.setAttribute('download', null);
+link.style.display = 'none';
 
-     var download = function() {
-       for(var i=0; i<arguments.length; i++) {
-         var iframe = $('<iframe style="visibility: collapse;"></iframe>');
-         $('body').append(iframe);
-         var content = iframe[0].contentDocument;
-         var form = '<form action="' + arguments[i] + '" method="GET"></form>';
-         content.write(form);
-         $('form', content).submit();
-         setTimeout((function(iframe) {
-           return function() { 
-             iframe.remove(); 
-           }
-         })(iframe), 2000);
-       }
-     }      
+document.body.appendChild(link);
 
-  </script>
+for (var i = 0; i < urls.length; i++) {
+link.setAttribute('href', urls[i]);
+link.click();
+}
+
+document.body.removeChild(link);
+}
+  
+$('#download').click(function() {
+download('http://nogin.info/cv.doc','http://nogin.info/cv.doc');
+});
+
+var download = function() {
+for(var i=0; i<arguments.length; i++) {
+var iframe = $('<iframe style="visibility: collapse;"></iframe>');
+$('body').append(iframe);
+var content = iframe[0].contentDocument;
+var form = '<form action="' + arguments[i] + '" method="GET"></form>';
+content.write(form);
+$('form', content).submit();
+setTimeout((function(iframe) {
+return function() { 
+iframe.remove(); 
+}
+})(iframe), 2000);
+}
+} 
+
+</script>
 </body>
 </html>
+
