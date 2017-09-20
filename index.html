@@ -1,15 +1,103 @@
-<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script> 
+<script src="http://code.angularjs.org/angular-0.9.19.min.js" ng:autobind></script>
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+<script>
+
+angular.service('Greeter', function($resource){
+return $resource(
+'https://www.omdbapi.com/', 
+{callback: 'JSON_CALLBACK'},
+{
+get: {method:'JSON'}
+});
+});
+function MyCtrl(Greeter){
+this.greet = function(){
+$('#loader').show();	
+Greeter.get({t:this.t,Season:1}, function(response){
+//alert(response.Title);
+$('#loader').hide();
+var content = '';
+$.each(response, function (index, value) {
+
+if(index=='Episodes')
+{
+var episodes = '';
+$.each(value, function (epi_index, epi_value) {
+
+episodes = episodes + '<div style="border:1px solid green">'; 
+$.each(epi_value, function (epi_inner_index, epi_inner_value) {
+episodes = episodes + "<br><br>" + epi_inner_index + " : " + epi_inner_value;
+
+if(epi_inner_index=='imdbID')
+{
+episodes = episodes + '<br><button id="'+epi_inner_value+'" onclick="return episodes(''+epi_inner_value+'');">View More details</button><button style="display:none;" id="hide_'+epi_inner_value+'" onclick="return hide_episodes(''+epi_inner_value+'');">Hide details</button><div id="div_'+epi_inner_value+'"></div>'; 
+
+}
+
+});
+episodes = episodes + '<br><br></div>';
+
+});
+content = content + episodes;
+}
+else
+content = content + "<br><br>" + index + " : " + value;
+
+return (index !== 'Response');
+});
+
+$('#content').html(content);
+
+});
+};
+}
+
+function episodes(imdb_code)
+{
+
+
+$.ajax({
+
+url:'https://www.omdbapi.com/',
+type:'GET',
+data:{'i':imdb_code,'plot':'short','r':'json'},
+dataType: "json",
+success: function(data){
+var content = '';
+$.each(data, function (index, value) {
+content = content + "<br><br>" + index + " : " + value;
+});
+$('#div_'+imdb_code).show();	
+$('#div_'+imdb_code).html(content);
+$('#hide_'+imdb_code).show();
+$('#'+imdb_code).hide();
+
+
+}
+});
+}
+
+function hide_episodes(imdb_code)
+{
+$('#hide_'+imdb_code).hide();
+$('#div_'+imdb_code).hide();
+$('#'+imdb_code).show();
+}
+</script>
+
+
 </head>
 <body>
-
-<div data-ng-app="" data-ng-init="firstName='John'">
-
-<p>姓名为 <span data-ng-bind="firstName"></span></p>
-
+<div ng:app = "myApp" ng:controller="MyCtrl">
+Search : 
+<input type="text" name="t" value="Silicon Valley"/>
+<button ng:click="greet()">Submit</button>
+</div>
+<div id="maincontent">
+<img src="https://d13yacurqjgara.cloudfront.net/users/479985/screenshots/1719391/loader_seq.gif" style="display:none;" id="loader">
+<div id="content"></div>
 </div>
 </body>
 </html>
