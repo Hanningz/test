@@ -54,40 +54,17 @@
   <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2 conForm">
-          <div ng-app="">
-			<p>我的第一个表达式： {{ 5 + 5 }}</p>
-		  
-		  
-			<form>
-    First Name: <input type="text" ng-model="firstname">
-			</form>
-  <h1>你输入的内容为: {{firstname}}</h1>
-  <div ng-controller="InputCtrl">
-    <h2>Input</h2>
-    <form ng-submit="addInput()">
-      <input type="text" ng-model="input.name"  size="30"
-             placeholder="输入员工姓名">
-      <input type="number" ng-model="input.age"  size="30"
-             placeholder="输入员工年龄">
-      <input type="text" ng-model="input.title"  size="30"
-             placeholder="输入员工职位">
-      <input class="btn-primary" type="submit" value="add">
-    </form>
-</div>
-<br />
-<div ng-controller="OutputCtrl">
-    <h2>Output</h2>
-    <ul>
-      <li ng-repeat="p in persons.list">
-        {{p.name}}, {{p.age}}, {{p.title}}
-      </li>
-    </ul>
-</div>
+        <div ng-app="myApp" ng-controller="customersCtrl"> 
+ 
+		<ul>
+		<li ng-repeat="x in names">
+		{{ x.Name + ', ' + x.Country }}
+		</li>
+		</ul>
+ 
+	</div>
+ 
 
-</div>
-
-		  
-		  
         </div>	
     </div>
   </div>
@@ -100,50 +77,12 @@
 <script src="js/bootstrap.min.js"></script>  
 <script src="js/main.js"></script>
 <script>
+
 var app = angular.module('myApp', []);
-    
-app.factory('testFactory', function(){
-    var testObject = {};
-    testObject.list = [];
-    
-    var _setter = function (data) {
-    	testObject.list.push(data);
-    };
-    
-    var _getter = function () {
-    	return testObject;
-    };
-    
-    return {
-    	setter: _setter,
-      getter: _getter
-    }               
+app.controller('customersCtrl', function($scope, $http) {
+ $http.get("http://www.runoob.com/try/angularjs/data/Customers_JSON.php")
+ .success(function (response) {$scope.names = response.records;});
 });
-
-function InputCtrl($scope, testFactory)
-{
-    $scope.input = {
-    	name: '',
-      age: null,
-      title: ''
-    };
-    
-    $scope.addInput = function() {
-    	testFactory.setter($scope.input);
-      $scope.input = {
-        name: '',
-        age: null,
-        title: ''
-      };
-    };
-    
-}
-
-function OutputCtrl($scope, testFactory)
-{
-    $scope.persons = testFactory.getter();
-}
-
 </script>
 
 </body>
