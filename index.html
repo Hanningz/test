@@ -80,7 +80,7 @@
 
 var app = angular.module('myApp', []);
 app.controller('customersCtrl', function($scope, $http) {
- $http.get("http://www.runoob.com/try/angularjs/data/Customers_JSON.php")
+ $http.get("https://github.com/Hanningz/test/blob/master/Customers_JSON.php")
  .success(function (response) {$scope.names = response.records;});
 });
 </script>
