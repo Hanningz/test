@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 
-<body>
+<body ng-controller = "myController">
 <!-- header section -->
 <section class="navpart">
   <header id="header">
@@ -71,25 +71,20 @@
         </div>	
     </div>
 	
-	<div ng-app="myApp" ng-controller="customersCtrl"> 
-
-<table>
-  <tr ng-repeat="x in names">
-    <td>{{ x.Name }}</td>
-    <td>{{ x.Country }}</td>
-  </tr>
-</table>
-
-</div>
+	<button ng-click= "myClick()" ></button>  
+    <h1 ng-if = "!flag"> 我是林炳文Evankaka</h1>  
 
 <script>
-var app = angular.module('myApp', []);
-app.controller('customersCtrl', function($scope, $http) {
-    $http.get("/try/angularjs/data/Customers_JSON.php")
-    .then(function (result) {
-        $scope.names = result.data.records;
-    });
-});
+var app = angular.module('myApp', []);//获得整个angularJS影响的html元素  
+//控制器  
+app.controller('myController', function($scope) {  
+    $scope.flag = false;  
+    $scope.myClick = function(){  
+        console.log($scope.flag);  
+        $scope.flag  = !$scope.flag ;  
+        console.log($scope.flag);  
+    }  
+});  
 </script>
 
  
