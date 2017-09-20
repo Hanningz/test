@@ -1,34 +1,278 @@
-<!DOCTYPE HTML>
-<html>
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Models</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/font-icon.css">
+<link rel="stylesheet" href="css/animate.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link href="/try/bootstrap/twitter-bootstrap-v2/docs/assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.bootcss.com/angular.js/1.6.4/angular.min.js"></script>
+</head>
+
 <body>
+<!-- header section -->
+<section class="navpart">
+  <header id="header">
+		<div class="navbar navbar-inverse navbar-fixed-top " id="menu">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href=""><img src="images/EIT.png" alt="" /></a>
+			</div>
+		
+			<div class="navbar-collapse collapse move-me" id="">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="home"><a href="index.html">HOME</a></li>
+					<li class="models"><a href="models.html"><font color="#20B2AA">MODELS</font></a></li>
+					<li class="contributors"><a href="contributors.html">CONTRIBUTORS</a></li>
+					<li class="aboutus"><a href="AboutUs.html">ABOUT US</a></li>
+					<li>
+						<a class="btn  btn-large" href="https://github.com/Hanningz/SMMRepository.">View GitHub</a>
+					</li>
+				</ul>
+			</div>   
+		</div>
+		</div>
+  </header>
+  <!-- banner text -->
+</section>
+<!-- header section --> 
 
-<a target="_blank" onclick="downloadAll(window.links)">Test me!</a>
-  
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<!-- models section -->
+<section id="contact" class="section" style="text-align:center;">
+<div id="accordion" role="tablist" aria-multiselectable="true">
+<div class="container">
+<div id="test-list">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2 conForm">
+			<h4>Welcome to the ACTIVE Data Model Repository</h4>
+			<h3>Reusable objects and object definitions are listed below</h3> 
+			<div>
+			<i class="fa fa-search" aria-hidden="true"></i>	
+			<input type="text" class="search" placeholder="search your model here by name, ID or keyword..." />
+            </div>
+		</div> 		
+	</div>
+
+	<div ng-app="myApp" ng-controller="input">
+	<h2>add</h2>
+	 <form ng-submit="addInput()">
+      <input type="text" ng-model="input.name"  size="30"
+             placeholder="models">
+	  <input class="btn-primary" type="submit" value="add">
+    </form>
+</div>
+<br />
+<div ng-controller="OutputCtrl">
+    <h2>Output</h2>
+    <ul>
+      <li ng-repeat="m in model.list">
+       {{m.name}}
+      </li>
+    </ul>
+</div>
+	
+    <ul class="list">
+	<li>
+	<div class="row">
+		
+		<div class="col-md-8 col-md-offset-2 conForm">	
+			<a href="Gateway_System/modelsOfGatewaySystem.html">
+			
+			<div class="notice notice-lg">
+				
+					<h4><span class="name"><strong>Gateway System</strong></span></h4> 
+				</div>
+				<div class="hover">
+					<div class="text">
+					<p class="description"> ID: 1022 Example Gateway Application Object describing base system</p>
+					</div>
+				</div>
+			
+			</a>
+		
+		</div>	
+	</div>
+    </li>	
+	
+	<li>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2 conForm">
+        <a href="#">
+          <div class="notice notice-lg">
+			<h4><span class="name"><strong>Gateway Wireless</strong></span></h4>
+			<p class="description">Example Gateway Application Object for representing wireless IP interfaces</P>
+	     </div> 
+        </a>
+		</div>
+	</div>
+	</li>
+
+	<li>	
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2 conForm">
+        <a href="#">
+          <div class="notice notice-lg">
+			<h4><span class="name"><strong>PAN Interface</strong></span></h4>
+			<p class="description">Generic object for modelling endpoint or gateway PAN interfaces, such as Bluetooth, BLE and Zigbee</P>
+	      </div> 
+        </a>
+        </div>
+    </div>
+	</li>
+	
+	<li>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2 conForm">
+        <a href="#">
+          <div class="notice notice-lg">
+			<h4><span class="name"><strong>BLE GATT</strong></span></h4>
+			<p class="description">Generic object for proxies to expose BLE services</P>
+	      </div> 
+        </a>
+        </div>
+    </div>
+	</li>
+	
+	<li>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2 conForm">
+        <a href="#">
+          <div class="notice notice-lg">
+			<h4><span class="name"><strong>EMM Integrator</strong></span></h4>
+			<p>Object for defining the components of an Energy Measurement Module</P>
+	      </div> 
+        </a>
+        </div>
+    </div>
+	</li>
+	
+	<li>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2 conForm">
+        <a href="#">
+          <div class="notice notice-lg">
+			<h4><span class="name"><strong>Log Control</strong></span></h4>
+			<p class="description">Controls the log handling for the sensor data</P>
+	      </div> 
+        </a>
+        </div>
+    </div>
+	</li>
+	
+	<li>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2 conForm">
+        <a href="#">
+          <div class="notice notice-lg">
+			<h4><span class="name"><strong>Device Binding</strong></span></h4>
+			<p class="description">Connects the EMM to the device it measures</P>
+	      </div> 
+        </a>
+        </div>
+    </div>	
+	</li>
+	
+		<li>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2 conForm">
+        <a href="#">
+          <div class="notice notice-lg">
+			<h4><span class="name"><strong>New model A</strong></span></h4>
+			<p class="description">descriptions of model and information</P>
+	      </div> 
+        </a>
+        </div>
+    </div>	
+	</li>
+	
+	<li>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2 conForm">
+        <a href="#">
+          <div class="notice notice-lg">
+			<h4><span class="name"><strong>New model B</strong></span></h4>
+			<p class="description">descriptions of model and information</P>
+	      </div> 
+        </a>
+        </div>
+    </div>	
+	</li>
+</ul>
+<ul class="pagination"></ul>
+</div>
+</div>
+</div>
+</section>						 
+
+
+
+<!-- models section --> 
+
+<!-- JS FILES --> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+<script src="js/bootstrap.min.js"></script>  
+<script src="js/main.js"></script>
+<script src="js/list.js"></script>
+<script src="js/list.page.js"></script>
 <script type="text/javascript">
-  
-var links = [
-'https://github.com/Hanningz/SMMRepository./blob/master/Gateway_System/Gateway_System.xml',
-'https://github.com/Hanningz/SMMRepository./blob/master/Gateway_System/Gateway_System.json'
-];
+	var modelList = new List('test-list', {
+	  valueNames: ['name', 'description'],
+	  page: 7,
+	  plugins: [ ListPagination({}) ] 
+	});
+</script>
+<script>
+var app = angular.module('myApp', []);
+    
+app.factory('testFactory', function(){
+    var testObject = {};
+    testObject.list = [];
+    
+    var _setter = function (data) {
+    	testObject.list.push(data);
+    };
+    
+    var _getter = function () {
+    	return testObject;
+    };
+    
+    return {
+    	setter: _setter,
+      getter: _getter
+    }               
+});
 
-function downloadAll(urls) {
-var link = document.createElement('a');
-
-link.setAttribute('download', null);
-link.style.display = 'none';
-
-document.body.appendChild(link);
-
-for (var i = 0; i < urls.length; i++) {
-link.setAttribute('href', urls[i]);
-document.body.appendChild(link);
-link.click(); 
+function input($scope, testFactory)
+{
+    $scope.input = {
+    	name: ''
+    };
+    
+    $scope.addInput = function() {
+    	testFactory.setter($scope.input);
+      $scope.input = {
+        name: ''
+      };
+    };
+    
 }
-document.body.removeChild(link);
-}
 
+function OutputCtrl($scope, testFactory)
+{
+    $scope.model = testFactory.getter();
+}
 </script>
 </body>
 </html>
-
