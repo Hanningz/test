@@ -54,40 +54,42 @@
   <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2 conForm">
-          <div class="des">
-			<p> 
-			Contributors are encouraged to first design their domain-specific data models using online data models supplied by the relevant SDOs, 
-			if possible. These definitions, as well as files containing implementation code as well as html code, then be submitted to the Meta Model Repository as a pull request.
-			</p>
-		  </div>
-        </div>	
-    </div>
-	
-	<div class="row" style="margin-top: 100px;">
-        <div class="col-md-8 col-md-offset-2 conForm">
           <div ng-app="">
 			<p>我的第一个表达式： {{ 5 + 5 }}</p>
-		  </div>
+		  
+		  
+			<form>
+    First Name: <input type="text" ng-model="firstname">
+			</form>
+  <h1>你输入的内容为: {{firstname}}</h1>
+  <div ng-controller="InputCtrl">
+    <h2>Input</h2>
+    <form ng-submit="addInput()">
+      <input type="text" ng-model="input.name"  size="30"
+             placeholder="输入员工姓名">
+      <input type="number" ng-model="input.age"  size="30"
+             placeholder="输入员工年龄">
+      <input type="text" ng-model="input.title"  size="30"
+             placeholder="输入员工职位">
+      <input class="btn-primary" type="submit" value="add">
+    </form>
+</div>
+<br />
+<div ng-controller="OutputCtrl">
+    <h2>Output</h2>
+    <ul>
+      <li ng-repeat="p in persons.list">
+        {{p.name}}, {{p.age}}, {{p.title}}
+      </li>
+    </ul>
+</div>
+
+</div>
+
+		  
+		  
         </div>	
     </div>
-	
-	<button ng-click= "myClick()" ></button>  
-    <h1 ng-if = "!flag"> 我是林炳文Evankaka</h1>  
-
-<script>
-var app = angular.module('myApp', []);//获得整个angularJS影响的html元素  
-//控制器  
-app.controller('myController', function($scope) {  
-    $scope.flag = false;  
-    $scope.myClick = function(){  
-        console.log($scope.flag);  
-        $scope.flag  = !$scope.flag ;  
-        console.log($scope.flag);  
-    }  
-});  
-</script>
-
- 
   </div>
 </section>						 
 
@@ -97,7 +99,52 @@ app.controller('myController', function($scope) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
 <script src="js/bootstrap.min.js"></script>  
 <script src="js/main.js"></script>
+<script>
+var app = angular.module('myApp', []);
+    
+app.factory('testFactory', function(){
+    var testObject = {};
+    testObject.list = [];
+    
+    var _setter = function (data) {
+    	testObject.list.push(data);
+    };
+    
+    var _getter = function () {
+    	return testObject;
+    };
+    
+    return {
+    	setter: _setter,
+      getter: _getter
+    }               
+});
 
+function InputCtrl($scope, testFactory)
+{
+    $scope.input = {
+    	name: '',
+      age: null,
+      title: ''
+    };
+    
+    $scope.addInput = function() {
+    	testFactory.setter($scope.input);
+      $scope.input = {
+        name: '',
+        age: null,
+        title: ''
+      };
+    };
+    
+}
+
+function OutputCtrl($scope, testFactory)
+{
+    $scope.persons = testFactory.getter();
+}
+
+</script>
 
 </body>
 </html>
