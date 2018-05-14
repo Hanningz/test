@@ -12,7 +12,11 @@ Object models of Gateway System
 
 #### object version
 
+urn:oma:lwm2m:ext:1022:1
+
 #### descripton
+
+This Object defines the basic settings for a generic gateway.
 
 #### Resource fields
 
