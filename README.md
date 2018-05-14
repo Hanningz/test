@@ -1,37 +1,50 @@
-## Welcome to GitHub Pages
+Object models of Gateway System
 
-You can use the [editor on GitHub](https://github.com/Hanningz/test/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+- __[HOME](../../index.html)
+- __[MODELS](../../models.html)
+- __[CONTRIBUTE](../../contribute.html)
+- __[ABOUT US](../../aboutUs.html)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+#### Gateway System
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+#### LWM2M
 
-```markdown
-Syntax highlighted code block
+#### object version
 
-# Header 1
-## Header 2
-### Header 3
+#### descripton
 
-- Bulleted
-- List
+#### Resource fields
 
-1. Numbered
-2. List
+| Resource        | ID | Access Type | Multiple Instances | Mandatory | type   | Description |
+| Hostname        | 0  | R,W         | Single             | Mandatory | String | This resource type returns the hostname of the gateway. |
+| Timezone        | 1  | R,W         | Single             | Optional  | String | This resource type returns the default timezone. |
+| DNS Server List | 2  | R,W         | Single             | Optional  | String | This resource type returns a list of DNS Servers used by this system. |
+| NTP Server List | 3  | R,W         | Single             | Optional  | String | This resource type returns a list of NTP Servers. |
 
-**Bold** and _Italic_ and `Code` text
+#### Example usage
 
-[Link](url) and ![Image](src)
-```
+The gateway system object contains the most basic functionalities for a gateway such as its name, timezone and so on. All properties are represented as readable and writable resources using standard LWM2M operations.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+#### XML
 
-### Jekyll Themes
+#### JSON
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Hanningz/test/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+#### Example usage
 
-### Support or Contact
+#### Code
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+#### Wakaama
+
+#### UCI
+
+#### Description
+
+OpenWRT gateway native data model for the whole gateway
+
+#### Config
+
+#### URL
+
+#### System
+
