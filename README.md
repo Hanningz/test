@@ -17,6 +17,7 @@ Object models of Gateway System
 #### Resource fields
 
 | Resource        | ID | Access Type | Multiple Instances | Mandatory | type   | Description |
+| --------------- |--- | ----------- | -----------------  | ----------| -------| ----------- |
 | Hostname        | 0  | R,W         | Single             | Mandatory | String | This resource type returns the hostname of the gateway. |
 | Timezone        | 1  | R,W         | Single             | Optional  | String | This resource type returns the default timezone. |
 | DNS Server List | 2  | R,W         | Single             | Optional  | String | This resource type returns a list of DNS Servers used by this system. |
